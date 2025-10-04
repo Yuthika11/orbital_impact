@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Orbital Simulation Setup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="setup-view">
+        <div class="controls">
+            <h1>3D Orbital Simulation</h1>
+            <h2>Status: Awaiting Setup</h2>
+            
+            <div class="fieldset-container">
+                <fieldset>
+                    <legend>🪐 Planet</legend>
+                    <label>Min Distance (px): <span id="p_min_dist_val" class="calculated-field">...</span></label>
+                    <label for="p_max_dist">Max Distance (px):</label>
+                    <input type="number" id="p_max_dist" value="250" min="50">
+                    <label for="p_eccentricity">Eccentricity: <span id="p_ecc_val">0.2</span></label>
+                    <input type="range" id="p_eccentricity" min="0" max="0.95" step="0.01" value="0.2">
+                    <label for="p_inclination">Inclination: <span id="p_inc_val">10</span>°</label>
+                    <input type="range" id="p_inclination" min="0" max="90" step="1" value="10">
+                    <label for="p_period">Revolution Period (days):</label>
+                    <input type="number" id="p_period" value="365" min="10">
+                </fieldset>
+
+                <fieldset>
+                    <legend>☄️ Meteor</legend>
+                    <label>Min Distance (px): <span id="m_min_dist_val" class="calculated-field">...</span></label>
+                    <label for="m_max_dist">Max Distance (px):</label>
+                    <input type="number" id="m_max_dist" value="400" min="50">
+                    <label for="m_eccentricity">Eccentricity: <span id="m_ecc_val">0.7</span></label>
+                    <input type="range" id="m_eccentricity" min="0" max="0.95" step="0.01" value="0.7">
+                    <label for="m_inclination">Inclination: <span id="m_inc_val">30</span>°</label>
+                    <input type="range" id="m_inclination" min="0" max="90" step="1" value="30">
+                    <label for="m_period">Revolution Period (days):</label>
+                    <input type="number" id="m_period" value="800" min="10">
+                    <label for="m_material">Material:</label>
+                    <select id="m_material">
+                        <option value="Rock" selected>Rock</option>
+                        <option value="Iron">Iron</option>
+                        <option value="Ice">Ice</option>
+                    </select>
+                </fieldset>
+            </div>
+            
+            <button id="launchBtn">Launch Simulation</button>
+        </div>
+    </div>
+
+    <div id="simulation-view">
+        <h2 id="simulation-status"></h2>
+        <div id="simulation-container"></div>
+        <button id="backBtn">Back to Setup</button>
+        <p class="info">Use your mouse to rotate (left-click), pan (right-click), and zoom (scroll).</p>
+    </div>
+
+    <script type="importmap">
+        { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js", "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/" } }
+    </script>
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>
