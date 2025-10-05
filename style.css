@@ -103,3 +103,25 @@ canvas { display: block; }
     color: #888;
     z-index: 10;
 }
+
+/* --- ADD THIS NEW RULE FOR THE REDIRECT BUTTON --- */
+#redirectBtn {
+  /* This brings the button to the front layer */
+  z-index: 100;
+
+  /* This positions it below the "Collision Detected" text */
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* These are just for better looks */
+  padding: 12px 24px;
+  font-size: 1.1em;
+  cursor: pointer;
+  border: 1px solid white;
+  background-color: #1a1a1a;
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
