@@ -13,6 +13,7 @@ const mMaterial = document.getElementById('m_material');
 const collisionStatus = document.getElementById('collision-status');
 const simulationStatus = document.getElementById('simulation-status');
 const container = document.getElementById('simulation-container');
+const redirectBtn = document.getElementById('redirectBtn');
 
 // --- Global Three.js Variables ---
 let scene, camera, renderer, controls;
@@ -62,6 +63,7 @@ function startSimulation() {
     isCollided = false;
     explosionParticles = null;
     simulationStatus.style.display = 'none';
+    redirectBtn.style.display = 'none'; // <<< 2. HIDE BUTTON ON SIMULATION START
 
     const planetParams = calculateOrbitParams(pMaxDist.value, pEccentricity.value, pInclination.value, pPeriod.value);
     const meteorParams = calculateOrbitParams(mMaxDist.value, mEccentricity.value, mInclination.value, mPeriod.value);
@@ -89,9 +91,10 @@ function animate() {
             scene.remove(meteor.mesh); scene.remove(meteorOrbit);
             setTimeout(() => {
                 cancelAnimationFrame(animationFrameId);
-                // Update the NEW status element and make it visible
+                // Update status and show the redirect button
                 simulationStatus.textContent = "Collision Detected!";
                 simulationStatus.style.display = 'block';
+                redirectBtn.style.display = 'block'; // <<< 3. SHOW BUTTON ON COLLISION
             }, 10);
         }
     } else {
@@ -121,7 +124,7 @@ function calculateOrbitParams(max,e,inc,per){e=parseFloat(e);const a=parseFloat(
 launchBtn.addEventListener('click', () => {
     setupView.style.display = 'none';
     simulationView.style.display = 'block';
-    renderer.setSize(window.innerWidth, window.innerHeight); // Ensure renderer is correct size
+    renderer.setSize(window.innerWidth, window.innerHeight);
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     startSimulation();
@@ -132,6 +135,12 @@ backBtn.addEventListener('click', () => {
     simulationView.style.display = 'none';
     cancelAnimationFrame(animationFrameId);
 });
+
+// <<< 4. ADD CLICK LISTENER FOR THE REDIRECT BUTTON
+redirectBtn.addEventListener('click', () => {
+    window.location.href = 'https://yuthika11.github.io/Planetary_impact/';
+});
+
 
 // Logic to auto-update min distance display
 function updateMinDistanceDisplays(){
