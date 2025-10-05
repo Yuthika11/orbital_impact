@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D Orbital Simulation Setup</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="test.css">
 </head>
 <body>
 
@@ -55,13 +55,16 @@
         <h2 id="simulation-status"></h2>
         <div id="simulation-container"></div>
         <button id="backBtn">Back to Setup</button>
+        
+        <button id="redirectBtn" style="display: none;">Learn More About Planetary Impacts</button>
+        
         <p class="info">Use your mouse to rotate (left-click), pan (right-click), and zoom (scroll).</p>
     </div>
 
     <script type="importmap">
         { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js", "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/" } }
     </script>
-    <script type="module" src="script.js"></script>
+    <script type="module" src="test.js"></script>
 
 </body>
 </html>
